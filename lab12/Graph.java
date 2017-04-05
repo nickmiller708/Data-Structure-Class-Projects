@@ -1,0 +1,125 @@
+/* Nick and Haofei
+   Graph class */
+import ch09.graphs.*;
+import java.util.*;
+import ch05.queues.*;
+import ch06.lists.*;
+public class Graph<T extends Vertex> implements WeightedGraphInterface<T> {
+    protected int v; // the number of vertices
+    protected ArrayList<T> vertices; //the list of vertex objects
+    protected int max;
+    public Graph(int n) {
+	max = n;
+	v = 0;
+	vertices = new ArrayList<T>();
+    }
+    public boolean isEmpty() {
+	return (v == 0);
+    }
+    public boolean isFull() {
+	return (v == max);
+    }
+    private int indexIs(T vertex) {
+	// returns the index of the Vertex Object for city vertex or -1
+	boolean found = false;
+	int index = 0;
+	for (int i = 0; i < vertices.size(); i ++) {
+	    Vertex a = vertices.get(i);
+	    if (a.equals(vertex))
+		found = true;
+	    else if (found != true) {
+		index ++; } //will stop increase the index after finding in the array list
+	}
+	if (found == true) {
+	    return index;
+	}
+	else 
+	    return -1;
+    }
+    public void addVertex(T vertex) {
+        vertices.add(vertex);
+    }
+    public boolean hasVertex(T vertex) {
+       	boolean found = false;
+	for (int i = 0; i < vertices.size(); i ++) {
+	    Vertex a = vertices.get(i);
+	    if (a.equals(vertex))
+		found = true;
+	}
+	return found;
+    }
+    public void addEdge(T fromVertex, T toVertex, int weight) {
+	int v1 = indexIs(fromVertex);
+	int v2 = indexIs(toVertex);
+	if ((v1!= -1) && (v2!= -1)) {
+	    Edge e = new Edge(v2, weight);
+	    T vtx = (vertices.get(v1));
+	    vtx.addEdge(e);
+	}
+    }
+    public int weightIs(T fromVertex, T toVertex) {
+	int v1 = indexIs(fromVertex);
+	T vtx = vertices.get(v1);
+	RefUnsortedList<Edge> list = vtx.getList();
+	boolean found = false;
+	int weight = -1;
+	while (found != true) {
+	    Edge e = list.getNext();
+	    if (e.equals(toVertex)) {
+		weight = e.getWeight();
+		found = true;
+	    }
+	}
+	return weight;	
+    }
+    public ArrayUnbndQueue<T> getToVertices(T vertex) {
+	int v1 = indexIs(vertex);
+	T vtx = vertices.get(v1);
+	ArrayUnbndQueue<Integer> a = vtx.getToVertexIndices();
+	ArrayUnbndQueue<T> returner = new ArrayUnbndQueue<T>();
+	while (a.isEmpty() == false) {
+	    int b = a.dequeue();
+	    returner.enqueue(vertices.get(b));
+	}
+	return returner;
+    }
+    public void  clearMarks() {
+	for (int i = 0; i < vertices.size(); i ++) {
+	    T vtx = vertices.get(i);
+	    vtx.mark(false);
+	}
+    }
+    public void markVertex(T vertex) {
+	int v1 = indexIs(vertex);
+	T vtx = vertices.get(v1);
+	vtx.mark(true);
+    }
+    public boolean isMarked(T vertex) {
+	int v1 = indexIs(vertex);
+	T vtx = vertices.get(v1);
+	return vtx.isMarked();
+    }
+    public T getUnmarked() {
+	boolean found = false;
+	int i =0;
+	T vtx = vertices.get(i);
+	while (found != true){ 
+	    if (vtx.isMarked() == false) {
+		found = true;
+	    }
+	    i ++;
+	    vtx = vertices.get(i);
+	   
+	}
+	return vtx;
+    }
+    public String toString() {
+	String returner = "";
+	for (int i = 0; i < vertices.size(); i++) {
+	    T vtx = vertices.get(i);
+	    returner = returner + vtx.toString() + "\n";
+	}
+	return returner;
+    }
+}
+	

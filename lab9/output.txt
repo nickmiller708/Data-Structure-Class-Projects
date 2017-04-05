@@ -1,0 +1,30 @@
+Output from Double.java from Nick Miller and Sean Dunn
+
+Arthur
+Computer Science
+Goodbye
+Hello
+Mathematics
+Testing
+Zoo
+
+Contains -Hello- true
+Contains -Spring- false
+size: 7
+Zoo
+Testing
+Mathematics
+Hello
+Goodbye
+Computer Science
+Arthur
+size: 4
+Computer Science
+Goodbye
+Hello
+Mathematics
+
+Computer Science
+Mathematics
+
+

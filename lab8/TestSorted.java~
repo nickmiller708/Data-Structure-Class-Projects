@@ -1,0 +1,10 @@
+import Scanner.util.*;
+import ch06.lists.*;
+public class TestSorted {
+    protected ArraySortedList<StreetAddress> list;
+    public TestSorted (String filename){
+	list = new ArraySortedList<StreetAddress>();
+	try {
+	    Scanner myscan = new Scanner(new File(filename));
+	    while (myscan.hasNextLine()) {
+		StreetAddress adder = new StreetAddress(myscan.nextInt(), myscan.nextLine()

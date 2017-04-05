@@ -1,0 +1,102 @@
+// Nick and Liren
+// Hash class
+import java.util.Random;
+public class hash {
+    protected int[] table;
+    protected int maxKeys, tablesize;
+    public hash(int size, double loadingfactor) {
+	maxKeys = (int)(size*loadingfactor+1);
+	table = new int[size];
+	tablesize = size;
+	for (int i = 0; i < size; i ++) {
+	    table[i] = -1;
+	}
+    }
+    public double fill () {
+	// returns the average number of successful comparisons
+	double numComptotal = 0.0;
+	int noKeys = 0; //number of keys in the table
+	Random rand = new Random();
+	int MAX = 75;
+	int[] used = new int[500];
+	for (int i =0; i < 500; i ++) {
+	    used[i] = -1;
+	}
+	while (noKeys != maxKeys) {
+	    int num = rand.nextInt(MAX+1) + 1;
+	    if (used[num-1] == -1) {
+		int comparison = hasher(num);
+		numComptotal = numComptotal + comparison;
+		used[num-1] = 0;
+		noKeys = noKeys+1;
+	    }  
+	    MAX = MAX + 20;
+	}
+	return (numComptotal/noKeys);
+    }
+    private int hasher(int i) {
+	// hashing the integer into the table
+	//h(x) = x%tablesize
+	// returns number of successful comparisons
+	int numComparisons = 0;
+	int num = i%tablesize;
+	boolean filled = false;
+	if (table[num] == -1) {
+	    table[num] = i;
+	    numComparisons = 1;
+	}
+	else {
+	    while (filled != true) {
+		num = num + 1;
+		numComparisons = numComparisons + 1;
+		if (num > tablesize-1) {
+		    num = 0;
+		}
+		if (table[num] == -1) {
+		    table[num] = i;
+		    filled = true;
+		}
+	    }
+	}
+	return numComparisons;
+    }
+    public int find(int i) {
+	// returns the number of comparisons
+	int num = i%tablesize;
+	int numComparisons = 0;
+	if (table[num] == -1) {
+	    numComparisons = 1;
+	}
+	else if (table[num] == i) {
+	    numComparisons = 1;
+	}
+	else {
+	    while ((table[num] != -1) || (table[num] != i) || (numComparisons != tablesize -1)) {
+		num = num + 1;
+		if (num > tablesize -1)
+		    num = 0;
+		numComparisons = numComparisons + 1;
+	    }
+	}
+	return numComparisons;
+    }
+    public String toString() {
+	String returner = "";
+	for (int i = 0; i < tablesize; i ++) {
+	    if (table[i] == -1) {
+		returner = returner + " -1 ";
+	    }
+	    else
+		returner = returner + table[i] +" ";
+	}
+	return returner;
+    }
+    public static void main(String[] args) {
+	hash test1 = new hash(11, .6);
+	System.out.println("Average Number of successful Comparisons: " + test1.fill());
+	System.out.println(test1);
+	hash test2 = new hash(11, .8);
+	System.out.println("Average number of successful comparisons: " + test2.fill());
+	System.out.println(test2);
+    }
+}

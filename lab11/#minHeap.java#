@@ -1,0 +1,23 @@
+/* NIck MIlle and 
+   minHeap class */
+import ch09.priorityQueues.*;
+import java.util.Random;
+import java.util.*;
+import support.*;
+public class minHeap<T extends Comparable<T>> implements PriQueueInterface<T> {
+    private ArrayList<T> elements;
+    private int lastIndex;
+    private int maxIndex;
+    public minHeap(int Size) {
+	lastIndex = -1;
+	elements = new ArrayList<T>(Size);
+	maxIndex = Size - 1;
+    }
+    public boolean isEmpty() {
+	return (lastIndex == -1);
+    }
+    public static void main(String[] args) {
+	minHeap<Integer> tester = new minHeap<Integer>(5);
+	System.out.println(tester.isEmpty());
+    }
+}

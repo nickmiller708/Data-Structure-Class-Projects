@@ -1,0 +1,29 @@
+10
+24
+List:
+[0] This person lives at: 1120  Bluegrass Pike
+[1] This person lives at: 203  Bruce Court
+[2] This person lives at: 112  Cheryl Lane
+[3] This person lives at: 644  CrossHill Road
+[4] This person lives at: 838  CrossHill Road
+[5] This person lives at: 494  Denmark Drive
+[6] This person lives at: 1485  Lexington Road
+[7] This person lives at: 205  Mansfield Road
+[8] This person lives at: 133  Nancy Ave
+[9] This person lives at: 10  Old Goggin Road
+[10] This person lives at: 2778  Perryville Road
+[11] This person lives at: 1305  Quarry Road
+[12] This person lives at: 502  Silverbrook Dr.
+[13] This person lives at: 638  Silverbrook Drive
+[14] This person lives at: 131  St. Mildred's Court
+[15] This person lives at: 154  St. Mildred's Court
+[16] This person lives at: 408  Streamland Drive
+[17] This person lives at: 203  W. Lexington Ave
+[18] This person lives at: 850  W. Lexington Ave
+[19] This person lives at: 500  W. Main
+[20] This person lives at: 600  W. Walnut
+[21] This person lives at: 630  W. Walnut
+[22] This person lives at: 100  Walton Ave
+[23] This person lives at: 115  Waterworks Road
+[24] This person lives at: 231  Bluffwood Drive
+

@@ -1,0 +1,17 @@
+import ch06.lists.*;
+public class StreetAddress implements Comparable<StreetAddress> {
+    int numofStreet;
+    String nameofStreet;
+    public StreetAddress(int num, String name){
+	numofStreet = num;
+	nameofStreet = name;
+    }
+    public int getNum() {
+	return numofStreet;
+    }
+    public int getString() {
+	return nameofStreet;
+    }
+    public boolean equals(Object o){
+	StreetAddress test = (StreetAddress) o;
+	if ((test.getNum() == numofStreet) && (nameofStreet.equals(test.getString())))

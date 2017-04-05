@@ -1,0 +1,70 @@
+// This is the class for the Appointment Book
+// Made by Nick Miller
+// Assistance by:  No one
+import ch01.Date;
+public class Apptbook  {
+    protected Appt[] log;
+    protected int lastindex = 0, size= 20;
+    protected String name;
+    public Apptbook(String name) {
+	// This will create an appointment book and give it a name
+	log = new Appt[size];
+	this.name = name;
+    }
+    public void insert(Appt appointment) {
+	log[lastindex] = appointment;
+	lastindex = lastindex + 1;
+    }
+    public boolean isFull() {
+	boolean value;
+	if ((lastindex + 1) == size) {
+	    value =  true;
+	}
+	else
+	    value =  false;
+	return value;
+    }
+    public int size() {
+ // will return size of Appointment book (how many appointments there are!)
+	return lastindex;
+    }
+    public void clear() {
+	int i = 0;
+	while (i != size) {
+	    log[i] = null;
+	    i = i + 1;
+	// will set anything in the array with an appointment in it to null
+	}
+	lastindex = 0;
+    }
+    public String toString() {
+	String returns = ""+ name + "\n";
+	int i = 0;
+	while (i != lastindex) {
+	    if (log[i] == null) {
+		returns = returns + (i+1) + ". empty" + "\n";}
+	    else {
+		returns = returns + (i+1) + "." + log[i] + "\n";}
+	    i = i + 1;
+	}
+	return returns;
+    }
+    public static void main(String[] args) {
+	Date ans = new Date(12,12,2015);
+	String reason = "I have an appointment";
+	Time ans1 = new Time(12,24);
+	Appt thing = new Appt(ans, reason, ans1);
+	Date ans2 = new Date(11,12,2015);
+	String reason1 = "I have an appointment!";
+	Time ans3 = new Time(12,30);
+	Appt thing2 = new Appt(ans2, reason1, ans3);
+	Apptbook mybook = new Apptbook("My Book of Appointments");
+	mybook.insert(thing);
+	mybook.insert(thing2);
+	System.out.println(mybook);
+	System.out.println("This will show number of appointments in book. currently there are 2:       " + mybook.size());
+	System.out.println("This will show whether or not the book is full. should be false      : " + mybook.isFull());
+	mybook.clear();
+	System.out.println("this will show no appointments since cleared! \n" + mybook);
+    }
+}    

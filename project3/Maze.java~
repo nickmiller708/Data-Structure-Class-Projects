@@ -1,0 +1,32 @@
+/* Nick Miller and Josh Boldt
+   This is the maze class */
+import ch06.lists.*;
+import java.util.*;
+import java.io.*;
+public class Maze {
+    int[][] Maze;
+    ArrayIndexedList frontier;
+    RefUnsortedList explored;
+    int row, column;
+    public Maze(String filename, int row, int column) {
+	try { 
+	Scanner myscan = new Scanner(new File(filename));
+	int[][] Maze = new int[row][column];
+	this.row = row;
+	this.column = column;
+	for (int r = 0; r < row; r++)
+	    for (int c = 0; c<column; c++){
+		Maze[row][column] = myscan.nextInt();
+	    }
+	}
+	catch (FileNotFoundException e) {
+	    System.out.println("File not found!");
+	}
+    }
+    public String toString() {
+	return explored.toString();
+    }
+    public static void main(String[] args) {
+	Maze test1 = new Maze("ints.txt", 3, 4);
+    }
+}

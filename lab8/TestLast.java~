@@ -1,0 +1,26 @@
+import ch06.lists.*;
+public class TestLast {
+    public static <T> T Last(ListInterface<T> list) {
+	T returns = null;
+	list.reset();
+	if (list.size() == 0) {
+	    System.out.println("This is an empty list!");
+	}
+	else {
+	    for (int i = 0; i < list.size(); i++) {
+		returns = list.getNext();
+	    }
+	}
+	return returns;
+    }
+    public static void main(String[] args) {
+	ArraySortedList<String> test1 = new ArraySortedList<String>();
+	test1.add("A");
+	test1.add("B");
+	test1.add("C");
+	test1.add("D");
+	System.out.println(Last(test1));
+	ArraySortedList<String> empty = new ArraySortedList<String>();
+	System.out.println(Last(empty));
+    }
+}

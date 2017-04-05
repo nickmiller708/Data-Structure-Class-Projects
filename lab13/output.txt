@@ -1,0 +1,16 @@
+Average Number of successful Comparisons: 1.4405940594059405
+Average Number of unsuccessful Comparisons: 2.4757185332011895
+Average number of successful comparisons: 1.451219512195122
+Average Number of unsuccessful Comparisons: 3.393458870168484
+Average Number of successful Comparisons: 2.045261669024045
+Average Number of unsuccessful Comparisons: 4.928642220019822
+Average Number of successful Comparisons: 2.227212681638045
+Average Number of unsuccessful Comparisons: 6.9078295341922695
+Average Number of successful Comparisons: 2.758663366336634
+Average Number of unsuccessful Comparisons: 13.733399405351834
+Average Number of successful Comparisons: 2.5407925407925407
+Average Number of unsuccessful Comparisons: 12.939544103072349
+Average Number of successful Comparisons: 3.22992299229923
+Average Number of unsuccessful Comparisons: 26.74132804757185
+Average Number of successful Comparisons: 12.705943691345151
+Average Number of unsuccessful Comparisons: 181.4430128840436

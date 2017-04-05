@@ -1,0 +1,8 @@
+Average Number of successful Comparisons: 1.5214521452145215
+Average number of successful comparisons: 1.6097560975609757
+Average Number of successful Comparisons: 1.5728429985855727
+Average Number of successful Comparisons: 2.120211360634082
+Average Number of successful Comparisons: 2.587871287128713
+Average Number of successful Comparisons: 2.8333333333333335
+Average Number of successful Comparisons: 3.8635863586358634
+Average Number of successful Comparisons: 6.7174139728884255

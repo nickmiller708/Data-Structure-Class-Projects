@@ -1,0 +1,151 @@
+// Rational.java made by Nick Miller and Chad Carter
+
+import java.util.Scanner;
+import java.lang.Math;
+public class Rational {
+    private int numerator, denominator;
+    public  Rational() {
+	numerator  = 0;
+	denominator = 1;
+    }
+    public   Rational(int number1) {
+	numerator = number1;
+	denominator = 1;
+    }
+    public Rational(int number1, int number2) {
+	if ((number1 < 0) && (number2 <0)) {
+		numerator = Math.abs(number1);
+		denominator = Math.abs(number2);
+	    }
+	else if ((number1 < 0) && (number2 >0)) {
+		numerator = number1;
+		denominator = number2;
+	    }
+	else if ((number1 > 0) && (number2 <0)) {
+		numerator = -1*number1;
+		denominator = Math.abs(number2);
+		    }
+	else {
+	    numerator = number1;
+	    denominator = number2;
+	}	
+    }
+
+    public int get_numerator() {
+	return numerator;
+    }
+    public int get_denominator() {
+	return denominator;
+    }
+    public String toString(){
+	if (denominator == 1){
+	    return ""+numerator;}
+	else
+	    return numerator+"/"+denominator;
+    }
+    private int gcd(int m, int  n){
+	int num = Math.abs(m);
+	int den = Math.abs(n);
+	if (n==0){
+	    return m;}
+	int r=1;
+	while (r !=0){
+	    r = m%n;
+	    if (r==0){
+		return n;}
+	    m=n;
+	    n=r;
+	}
+	return n;
+    }
+    private void reduce(){
+	int fac = gcd(Math.abs(numerator),Math.abs(denominator));
+	numerator = numerator/fac;
+	denominator = denominator/fac;
+    }
+    public Rational add(Rational xb7) {
+	int n1,n2,d1,d2;
+	n1 = numerator;
+	d1 = denominator;
+	n2 = xb7.get_numerator();
+	d2 = xb7.get_denominator();
+	int sumnum, sumden;
+	sumnum = ((n1*d2)+(n2*d1));
+	sumden = (d2*d1);
+	Rational sum = new Rational (sumnum,sumden);
+	return sum;
+    }
+    public Rational subtract(Rational q49) {
+	int n1,n2,d1,d2;
+	n1 = numerator;
+	d1 = denominator;
+	n2 = q49.get_numerator();
+	d2 = q49.get_denominator();
+	int subnum, subden;
+	subnum = ((n1*d2)-(n2*d1));
+	subden = (d2*d1);
+	Rational sub = new Rational (subnum, subden);
+	return sub;
+    }
+   public Rational multiply(Rational q49) {
+	int n1,n2,d1,d2;
+	n1 = numerator;
+	d1 = denominator;
+	n2 = q49.get_numerator();
+	d2 = q49.get_denominator();
+	int num, den ;
+	num = (n2*n1);
+	den = (d2*d1);
+	Rational mult = new Rational (num, den);
+	return mult;
+   }
+    public Rational divide(Rational q49) {
+	int n1,n2,d1,d2;
+	n1 = numerator;
+	d1 = denominator;
+	n2 = q49.get_numerator();
+	d2 = q49.get_denominator();
+	if (n2 == 0) {
+		return null;
+	    }
+	int num, den ;
+	num = (n1*d2);
+	den = (n2*d1);
+	Rational divi = new Rational (num, den);
+	return divi;
+    }
+    public static void main(String[] arg) {
+	Rational ans = new Rational();
+	Rational op1 = new Rational(3);
+	Rational op2 = new Rational(1,2);
+	Rational op3 = new Rational(-3,9);
+	Rational op4 = new Rational(3,-5);
+	Rational op5 = new Rational(-4,-9);
+	System.out.println("0  "+ans);
+	System.out.println("3  " +op1);
+	System.out.println("1/2  "+op2);
+	System.out.println("-3/9  "+op3);
+	System.out.println("-3/5  "+op4);
+	System.out.println("4/9  "+op5);
+	Rational op6 = new Rational(50,100);
+	op6.reduce();
+	System.out.println("1/2   "+ op6);
+	op3.reduce();
+	System.out.println("-1/3    "+ op3);
+	Rational op7 = op2.add(op6);
+	op7.reduce();
+	System.out.println("1     "+ op7);
+	Rational op8 = op4.subtract(op5);
+	op8.reduce();
+	System.out.println("-47/45      " + op8);
+	Rational op9 = op4.multiply(op5);
+	op9.reduce();
+	System.out.println("-4/15     " + op9);
+	Rational op10 = op4.divide(op5);
+	op10.reduce();
+	System.out.println("-27/20     " + op10);
+	}
+}
+    
+	
+	

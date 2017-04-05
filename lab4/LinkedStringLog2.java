@@ -1,0 +1,43 @@
+import ch02.stringLogs.*;
+public class LinkedStringLog2 extends LinkedStringLog {
+    public LinkedStringLog2(String element){
+	super(element);
+    }
+    public String smallest() {
+	// Assumes  that the string that comes first alphabetically is in the first location.
+	LLStringNode currNode = log;
+	String var1; // variable with the string that comes first in alphabet.
+	var1= currNode.getInfo();
+	while (currNode != null) {
+	    if (var1.compareToIgnoreCase(currNode.getInfo()) >  0){
+		var1 = currNode.getInfo(); }
+	    currNode = currNode.getLink();
+	}
+	return var1;
+    }
+	
+    public int howMany(String element) {
+	LLStringNode currNode = log;
+	int counter = 0;
+	String compare;
+	while (currNode != null) {
+	    compare = currNode.getInfo();
+	    if ((element.compareToIgnoreCase(compare)) ==  0) {
+		    counter ++;
+		}
+	    currNode = currNode.getLink();
+	}
+	return counter;
+    }
+    public static void main(String[] args) {
+	LinkedStringLog2 log = new LinkedStringLog2("this");
+	log.insert("a");
+	log.insert("b");
+	log.insert("c");
+	log.insert("d");
+	log.insert("b");
+	log.insert("b");
+	System.out.println("expected answer: a    " + log.smallest());
+	System.out.println("expected answer:3     " + log.howMany("b"));
+    }
+}

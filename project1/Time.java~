@@ -1,0 +1,50 @@
+// This is my Time class by Nick Miller
+// Assistance by:
+// Due on Monday February 23rd, 2015
+public class Time {
+    protected int hour, minute;
+    public Time(int hour, int minutes) {
+	this.hour = hour;
+	minute = minutes;
+    }
+    public int getHour() {
+	return hour;
+    }
+    public int getMin() {
+	return minute; }
+    public String toString() {
+	String returns = "";
+	if (hour == 12) { // This will account for noon
+	    returns = returns + hour + ":" + minute + "p.m";
+		}
+	else if (hour == 0) {// Will account for midnight
+	    returns = returns + (hour+12) + ":" + minute + "a.m";
+		}
+	else if ((hour > 12) && (hour < 24)) {// This will account for 1 pm to midnight 
+	    // this assumes that the user will not input an hour > 24
+	    returns = returns + (hour-12) + ":" + minute + "p.m";
+	}
+	else if (hour == 24) {
+	    returns = returns + (hour-12) + ":" + minute + "a.m";
+	}
+	else {
+	    returns = returns + hour + ":" + minute + "a.m";}
+	return returns;
+    }
+    public static void main(String[] args) {
+	Time ans = new Time(12,45);
+	System.out.println("This will show the getHour() function for first variable." + "\n" + "Should be 12:   " + ans.getHour());
+	System.out.println("This will show the getMin() function for the first variable." + "\n" + "Should be 45:   " + ans.getMin());
+	System.out.println("12:45 pm     " + ans);
+	Time op1 = new Time(0,45);
+	System.out.println("12:45 am     " + op1);
+	Time op2 = new Time(1,45);
+	System.out.println("1:45 a.m     " + op2);
+	Time op3 = new Time(14,23);
+	System.out.println("2:23 p.m     " + op3);
+	Time op4 = new Time(24,23);
+	System.out.println("12:23a.m    " + op4);
+	System.out.println("Test completed!");
+    }
+}
+	
